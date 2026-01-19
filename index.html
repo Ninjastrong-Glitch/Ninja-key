@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Text Copy</title>
+    <style>
+        body {
+            background: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            text-align: center;
+        }
+
+        input {
+            width: 260px;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: green;
+            background: white;
+            border: 2px solid green;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #eaffea;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <input type="text" id="randomText" readonly>
+    <br>
+    <button onclick="copyText()">Copy</button>
+</div>
+
+<script>
+    const texts = [
+        "Ninja",
+        "hazk",
+        "portuguese",
+        "indonesiateam",
+        "Everything"
+    ];
+
+    function randomizeText() {
+        const random = texts[Math.floor(Math.random() * texts.length)];
+        document.getElementById("randomText").value = random;
+    }
+
+    function copyText() {
+        const input = document.getElementById("randomText");
+        input.select();
+        input.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        alert("Text berhasil di copy!");
+    }
+
+    // acak otomatis saat halaman dibuka
+    randomizeText();
+</script>
+
+</body>
+</html>
